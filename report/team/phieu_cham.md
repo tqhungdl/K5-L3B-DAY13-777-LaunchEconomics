@@ -12,10 +12,15 @@ Nhóm số n chấm nhóm số n + 1; nhóm cuối chấm nhóm 1. Chấm theo b
 | Pilot ra được quyết định | Không đối chứng hoặc thiếu cỡ mẫu | Đủ cỡ mẫu, luật dừng chung chung | Tách được tác động, đủ mẫu, luật dừng có ngưỡng, thời hạn, người có quyền dừng | ... | ... |
 | **Tổng** | | | | **... / 30** | |
 
-**Quyết định của hội đồng:** Go · Go có điều kiện · No-go (giữ một)
+**Quyết định của hội đồng:** Go có điều kiện
 
-**Lý do:** ...
+**Lý do:** Chỉ pilot `noi_dia` và `hang_nang`. Xem lại 100% có thể tốn **12.415 đ/việc thành công** (`simulated`), vượt mức **12.000 đ** khi nhân viên tự làm.
+Trước khi bắt đầu, cần sửa chống hoàn trùng, đối soát sổ cái và được Giám đốc vận hành chấp thuận mức chênh tối thiểu **6 điểm phần trăm**.
 
-**Một câu hỏi cho đội trình:** ...
+**Một câu hỏi cho đội trình:** Nhóm bạn báo chi phí mỗi việc thành công là bao nhiêu? Nếu cộng chi phí cho các yêu cầu `chuyen_nhan_vien`, chi phí cả hệ thống trên mỗi yêu cầu là bao nhiêu? Nhóm đang tối ưu chi phí mỗi việc thành công hay chi phí toàn hệ thống?
 
-**Câu trả lời của đội trình (ghi lại tại buổi):** ...
+**Câu trả lời của đội trình (ghi lại tại buổi):**
+
+1. Chi phí là **4.472 đ/việc thành công** (`simulated`). Tính mọi lượt chạy, kể cả lượt lỗi, cộng tiền xem lại và làm lại rồi chia cho **978 việc thành công**. Mức này gấp **16,3 lần** hóa đơn token và tool bình quân (**274,7 đ/yêu cầu**).
+2. Cộng **148** ca `chuyen_nhan_vien` với **12.000 đ/ca** cho **5.125 đ/yêu cầu**. Nếu tính đủ **222** ca không thành công (gồm **74** ca làm lại), chi phí cả hệ thống là **(4.373.585 + 222 × 12.000) / 1.200 ≈ 5.865 đ/yêu cầu**, bằng **0,49×** mức nhân viên tự làm (cả hai mức chi phí là `simulated`).
+3. Nhóm tối ưu **chi phí toàn hệ thống**. Giới hạn **2 lượt** rẻ nhất cho hệ thống (**6.901.220 đ**). Giới hạn **1 lượt** rẻ nhất theo chi phí mỗi việc thành công (**4.111 đ**) và đẩy thêm **85** ca sang nhân viên, làm tổng chi phí tăng lên **7.449.781 đ** (chi phí `simulated`).

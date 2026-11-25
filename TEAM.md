@@ -11,7 +11,7 @@
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
-|   1 |        |      |       |        |         |
+|   1 | Nguyễn Tiến Đạt | 2A202603752 | nguyentiendatqb126@gmail.com | [chesschillchill](https://github.com/chesschillchill) | Người viết code, phụ trách A–B |
 |   2 |        |      |       |        |         |
 |   3 |        |      |       |        |         |
 |   4 |        |      |       |        |         |
@@ -37,16 +37,17 @@ Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 Sao chép mục dưới đây cho từng thành viên.
 
-## HoVaTen-MSSV
+## Nguyễn Tiến Đạt — 2A202603752
 
 ### Phần việc phụ trách
 
--
+- A1–A4 và B1–B4, gồm mô hình chi phí và phân tích độ nhạy.
 
 ### Đóng góp cụ thể
 
--
+- Hoàn thiện `src/lab13.py` và bảng chi phí. Ba phép thử A1 đạt 1,20 · 1,25 · 1,25.
+- Đối chiếu 9 kịch bản độ nhạy, so chi phí hệ thống với 3 giới hạn chạy và tính kịch bản xem lại 100%.
 
 ### Bằng chứng
 
--
+- Commit `2b9ce2f`, [bảng chi phí](report/team/bang_chi_phi.md) và [báo cáo cá nhân](report/team/2A202603752_NguyenTienDat.md).

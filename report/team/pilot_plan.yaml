@@ -3,22 +3,19 @@
 # Kiểm tra đọc được: python -c "import yaml; yaml.safe_load(open('../report/team/pilot_plan.yaml'))"
 #
 # D1 · Cỡ mẫu (baseline 0,70; mục tiêu +5 điểm; alpha 0,05; power 0,8; ICC 0,02)
-#   a) Chia theo yêu cầu:
-#   b) Theo nhân viên, m = 75:
-#   c) 20 nhân viên mỗi nhóm:
-#   d) 6 depot mỗi nhóm:
-#   e) Mức chênh 6 điểm (859 mỗi nhóm), 20 nhân viên mỗi nhóm:
-#
-# D2 · Năm câu kiểm tra "tách được tác động" với cách chia đã chọn (mỗi câu một dòng):
-#   1. Đối chứng chạy cùng thời gian:
-#   2. Chia ngẫu nhiên hay do người chọn:
-#   3. Ảnh hưởng gián tiếp và cách giảm:
-#   4. Chỉ số chính, ngưỡng, ngày quyết định đã viết trước:
-#   5. Ít nhất 20 cụm mỗi nhóm:
-#
-# Đánh đổi đã chấp nhận (nếu cách chia chưa đạt cả hai điều kiện):
-#
-# Tỉ lệ mo_lai_trong_7_ngay hiện tại và ngưỡng an toàn đã chọn:
+#   a) Chia theo yêu cầu: 1.251 yêu cầu mỗi nhóm.
+#   b) Theo nhân viên, m = 75: DE = 2,48; cần 3.103 yêu cầu thực tế mỗi nhóm, tương đương 42 nhân viên mỗi nhóm; 40 nhân viên không đủ.
+#   c) 20 nhân viên mỗi nhóm: cỡ mẫu hiệu dụng tối đa 1.000, không đạt 1.251.
+#   d) 6 depot mỗi nhóm: cỡ mẫu hiệu dụng tối đa 300, không đạt 1.251.
+#   e) Mức chênh 6 điểm: cần 859 mỗi nhóm; với 20 nhân viên mỗi nhóm cần ít nhất 299 yêu cầu mỗi nhân viên, DE = 6,96.
+# D2 · Năm câu kiểm tra khả năng tách tác động khi chia theo nhân viên
+#   1. Đối chứng đồng thời: 20 nhân viên đối chứng xử lý yêu cầu theo quy trình hiện tại, cùng tuần và cùng depot với nhóm dùng trợ lý.
+#   2. Phân nhóm ngẫu nhiên: phân tầng theo depot và bốc thăm nhân viên bằng code với seed 20261125, chia 20 người mỗi nhóm.
+#   3. Ảnh hưởng gián tiếp: nhân viên cùng depot có thể chia sẻ gợi ý; giới hạn quyền theo staff_id, yêu cầu giữ gợi ý trong nhóm can thiệp và ghi log lượt mở trợ lý.
+#   4. Chốt trước: chỉ số chính là tỉ lệ đóng trong 24 giờ và không mở lại trong 7 ngày; MDE 6 điểm phần trăm; chốt luật dừng và ngày quyết định 2027-01-05 trước khi bắt đầu.
+#   5. Số cụm: có đúng 20 cụm mỗi nhóm, mỗi nhân viên là 1 cụm; cần ít nhất 299 yêu cầu mỗi nhân viên để đạt cỡ mẫu cho MDE 6 điểm.
+# Đánh đổi: không đủ power để phát hiện MDE 5 điểm; chấp nhận MDE 6 điểm. Nếu tác động thật chỉ là 5 điểm, power khoảng 0,64.
+# Tỉ lệ mo_lai_trong_7_ngay hiện tại: 4,25% (51/1.200); dùng ngưỡng chênh lệch so với đối chứng >= 2 điểm kèm trần tuyệt đối 6%, không dùng ngưỡng tuyệt đối 3% vì sẽ có thể dừng ngay tuần đầu.
 
 pilot:
   owner: "?"                      # một người có tên vai trò, không ghi "cả đội"

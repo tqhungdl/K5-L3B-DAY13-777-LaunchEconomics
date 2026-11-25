@@ -4,38 +4,52 @@
 
 ## Hai bộ nhãn độc lập
 
-Người gắn nhãn 1: ... · Người gắn nhãn 2: ... (gắn trong 8 phút, không trao đổi)
+Người gắn nhãn 1: Trần Quang Hưng · Người gắn nhãn 2: Lê Quốc Khánh.
 
 | Ca | Nhãn người 1 | Nhãn người 2 | Trùng? | Nhãn thống nhất |
 | --: | --- | --- | --- | --- |
-| 1 | Do người dùng | ... | ... | ... |
-| 2 | Ngữ cảnh | ... | ... | ... |
-| 3 | Ngầm | ... | ... | ... |
-| 4 | Hệ thống | ... | ... | ... |
-| 5 | Hệ thống | ... | ... | ... |
-| 6 | Do người dùng | ... | ... | ... |
-| 7 | Giới hạn hệ thống | ... | ... | ... |
-| 8 | Ngầm | ... | ... | ... |
-| 9 | Ngữ cảnh | ... | ... | ... |
-| 10 | Giới hạn hệ thống | ... | ... | ... |
-| 11 | Giới hạn hệ thống | ... | ... | ... |
-| 12 | Ngầm | ... | ... | ... |
-| 13 | Ngữ cảnh | ... | ... | ... |
-| 14 | Do người dùng | ... | ... | ... |
-| 15 | Hệ thống | ... | ... | ... |
-| 16 | Hệ thống | ... | ... | ... |
-| 17 | Ngữ cảnh | ... | ... | ... |
-| 18 | Hệ thống | ... | ... | ... |
-| 19 | Giới hạn hệ thống | ... | ... | ... |
-| 20 | Hệ thống | ... | ... | ... |
+| 1 | Do người dùng | Do người dùng | Có | Do người dùng |
+| 2 | Hệ thống | Hệ thống | Có | Hệ thống |
+| 3 | Do người dùng | Ngữ cảnh | Không | Ngữ cảnh |
+| 4 | Giới hạn hệ thống | Giới hạn hệ thống | Có | Giới hạn hệ thống |
+| 5 | Hệ thống | Ngầm | Không | Ngầm |
+| 6 | Do người dùng | Do người dùng | Có | Do người dùng |
+| 7 | Hệ thống | Hệ thống | Có | Hệ thống |
+| 8 | Ngầm | Hệ thống | Không | Hệ thống |
+| 9 | Hệ thống | Do người dùng | Không | Do người dùng |
+| 10 | Giới hạn hệ thống | Ngữ cảnh | Không | Ngữ cảnh |
+| 11 | Giới hạn hệ thống | Giới hạn hệ thống | Có | Giới hạn hệ thống |
+| 12 | Ngầm | Ngầm | Có | Ngầm |
+| 13 | Giới hạn hệ thống | Giới hạn hệ thống | Có | Giới hạn hệ thống |
+| 14 | Do người dùng | Do người dùng | Có | Do người dùng |
+| 15 | Hệ thống | Hệ thống | Có | Hệ thống |
+| 16 | Ngữ cảnh | Ngữ cảnh | Có | Ngữ cảnh |
+| 17 | Hệ thống | Ngầm | Không | Ngầm |
+| 18 | Hệ thống | Ngữ cảnh | Không | Ngữ cảnh |
+| 19 | Giới hạn hệ thống | Giới hạn hệ thống | Có | Giới hạn hệ thống |
+| 20 | Hệ thống | Hệ thống | Có | Hệ thống |
 
-**Tỉ lệ đồng thuận:** ... / 20 = ...%
+**Tỉ lệ đồng thuận ban đầu:** 13 / 20 = **65%**
+
+## Định nghĩa đã rà soát
+
+| Loại | Quy tắc áp dụng |
+| --- | --- |
+| Do người dùng | Đầu vào hoặc thao tác của người dùng trực tiếp gây lỗi. |
+| Hệ thống | Trợ lý làm sai thiết kế hoặc chính sách, và dấu hiệu sai đã lộ ra trong quá trình xử lý hoặc trong câu trả lời. |
+| Ngữ cảnh | Trợ lý làm đúng thiết kế hoặc chính sách, nhưng kết quả hoặc cách trình bày lệch với kỳ vọng hợp lý trong tình huống cụ thể. |
+| Giới hạn hệ thống | Trợ lý thiếu dữ liệu, chưa hỗ trợ định dạng đầu vào hoặc gặp yêu cầu ngoài phạm vi xử lý. |
+| Ngầm | Kết quả hoặc chi phí sai lệch mà luồng xử lý thông thường không phát hiện, chỉ lộ ra qua kiểm tra hoặc đối soát. |
 
 ## Quy tắc phân biệt cho các ca không trùng
 
-Mỗi ca không trùng một câu. Đồng thuận dưới 80% thì ghi định nghĩa đã viết lại.
-
-- ...
+- **Ca 3 — Ngữ cảnh.** Hoàn về ví đúng thiết kế, nhưng khách kỳ vọng nhận tiền qua tài khoản ngân hàng.
+- **Ca 5 — Ngầm.** Chỉ kiểm tra mẫu cuối tuần mới phát hiện 14 đơn được hoàn thừa vì tính theo giá trước giảm.
+- **Ca 8 — Hệ thống.** Trích dẫn điều khoản không tồn tại xuất hiện ngay trong câu trả lời, dù số tiền hoàn đúng.
+- **Ca 9 — Do người dùng.** Đầu vào sai vì khách nhập mã đơn của sàn vào ô mã vận đơn.
+- **Ca 10 — Ngữ cảnh.** Trợ lý áp dụng đúng điều khoản bất khả kháng, nhưng cam kết giao trong 24 giờ trên ứng dụng tạo kỳ vọng khách sẽ được hoàn phí.
+- **Ca 17 — Ngầm.** Trợ lý dùng bảng giá cũ cho 212 đơn trong 9 ngày và sai lệch không dẫn đến lượt mở lại nào.
+- **Ca 18 — Ngữ cảnh.** Hoàn 15.000 đ đúng chính sách, nhưng thiếu cách tính khiến khách tưởng bị hoàn thiếu.
 
 ## Bảng khắc phục cho 5 ca, mỗi loại một ca
 
@@ -43,8 +57,8 @@ Cách phát hiện phải đo được (event, ngưỡng, tần suất). Ngườ
 
 | Ca | Loại lỗi | Phát hiện bằng gì | Khắc phục thế nào | Ai phụ trách |
 | --: | --- | --- | --- | --- |
-| ... | Do người dùng | ... | ... | ... |
-| ... | Hệ thống | ... | ... | ... |
-| ... | Ngữ cảnh | ... | ... | ... |
-| ... | Giới hạn hệ thống | ... | ... | ... |
-| ... | Ngầm | ... | ... | ... |
+| 9 | Do người dùng | Event `input_validation_failed`; cảnh báo khi vượt **2% số yêu cầu/ngày** | Nhận diện mã sàn thương mại điện tử và tra sang mã vận đơn; nếu không tra được thì hướng dẫn kèm ảnh | PM trợ lý hoàn phí |
+| 7 | Hệ thống | Đối soát mỗi giờ: thông báo “đã hoàn” không có bản ghi sổ cái `ok` cùng `trace_id`; ngưỡng **0 ca** | Chỉ báo “đã hoàn” khi sổ cái trả `ok`; sau 3 lỗi 503 thì báo đang xử lý và chuyển nhân viên | Kỹ sư trưởng agent |
+| 18 | Ngữ cảnh | Theo dõi hàng tuần tỉ lệ mở lại với lý do số tiền trong các ca kiểm tra thấy phép tính đúng | Tin nhắn luôn ghi cách tính, ví dụ **30.000 đ × 50% = 15.000 đ** | Trưởng nhóm CSKH |
+| 4 | Giới hạn hệ thống | Event `handoff_to_staff` với `reason=thieu_du_lieu`, tổng hợp theo loại yêu cầu mỗi tuần | Giữ chuyển nhân viên kèm tóm tắt; đưa `quoc_te` ra khỏi phạm vi pilot | PM trợ lý hoàn phí |
+| 17 | Ngầm | Đối soát mẫu **100 đơn/tuần** với bảng giá có hiệu lực tại thời điểm xử lý; cảnh báo từ **1 đơn lệch** | Xóa bộ nhớ đệm khi bảng giá đổi và ghi phiên bản bảng giá vào log cùng `trace_id` | Kế toán trưởng |

@@ -7,10 +7,10 @@ Nhóm số n chấm nhóm số n + 1; nhóm cuối chấm nhóm 1. Chấm theo b
 
 | Tiêu chí | 0 điểm | 5 điểm | 10 điểm | Điểm | Lý do (có số) |
 | --- | --- | --- | --- | ---: | --- |
-| Đề xuất khớp bằng chứng | Mâu thuẫn với số của chính nhóm | Khớp nhưng bỏ qua một con số bất lợi | Khớp, nêu cả con số bất lợi và cách xử lý | ... | ... |
-| Số giả lập và phạm vi | Không nhãn; phạm vi "mọi yêu cầu" | Có nhãn hoặc có thu hẹp phạm vi | Nhãn ở mọi số giả lập; phạm vi thu hẹp có lý do bằng số | ... | ... |
-| Pilot ra được quyết định | Không đối chứng hoặc thiếu cỡ mẫu | Đủ cỡ mẫu, luật dừng chung chung | Tách được tác động, đủ mẫu, luật dừng có ngưỡng, thời hạn, người có quyền dừng | ... | ... |
-| **Tổng** | | | | **... / 30** | |
+| Đề xuất khớp bằng chứng | Mâu thuẫn với số của chính nhóm | Khớp nhưng bỏ qua một con số bất lợi | Khớp, nêu cả con số bất lợi và cách xử lý | 10 | Nêu chi phí xem lại 100% có thể vượt **12.000 đ/việc thành công** (`simulated`) và yêu cầu có kế hoạch giảm xem lại theo kết quả an toàn. |
+| Số giả lập và phạm vi | Không nhãn; phạm vi "mọi yêu cầu" | Có nhãn hoặc có thu hẹp phạm vi | Nhãn ở mọi số giả lập; phạm vi thu hẹp có lý do bằng số | 5 | Chỉ pilot `noi_dia` và `hang_nang`, có lý do bằng số. Một số kết quả độ nhạy, như mức tăng **51,8%** khi làm lại gấp đôi, thiếu nhãn `simulated` tại mục trình bày. |
+| Pilot ra được quyết định | Không đối chứng hoặc thiếu cỡ mẫu | Đủ cỡ mẫu, luật dừng chung chung | Tách được tác động, đủ mẫu, luật dừng có ngưỡng, thời hạn, người có quyền dừng | 10 | Có đối chứng, **20 cụm mỗi nhóm**, mục tiêu **859 mẫu hiệu dụng mỗi nhóm** cho mức chênh 6 điểm phần trăm, và luật dừng có ngưỡng, thời hạn, người có quyền dừng. |
+| **Tổng** | | | | **25 / 30** | |
 
 **Quyết định của hội đồng:** Go có điều kiện
 

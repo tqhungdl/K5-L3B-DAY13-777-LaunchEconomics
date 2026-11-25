@@ -14,14 +14,14 @@ Nhóm chia theo module: A–B phụ trách mô hình chi phí và độ nhạy; 
 
 ## 3. Giải pháp
 
-- **A–B:** Hoàn thiện `src/lab13.py`, kiểm tra ba phép thử A1, tính chi phí từ mọi lần chạy kể cả lần lỗi, tách theo loại yêu cầu và lập bảng độ nhạy trong `report/team/bang_chi_phi.md`.
+- **A–B (Nguyễn Tiến Đạt):** Hoàn thiện `src/lab13.py`, kiểm tra ba phép thử A1, tính chi phí từ mọi lần chạy kể cả lần lỗi, tách theo loại yêu cầu và lập bảng độ nhạy trong `report/team/bang_chi_phi.md`.
 - **C:** Gắn nhãn độc lập 20 ca lỗi theo năm loại Google PAIR, so đồng thuận và ghi cách phát hiện/khắc phục trong `report/team/bang_loi.md`. Bộ nhãn tham khảo đạt 20/20 = 100%; nhóm phải xác nhận tên người gắn nhãn và bộ nhãn thực tế trước khi nộp.
 - **D:** Tính cỡ mẫu, hệ số thiết kế, kiểm tra khả năng tách tác động và hoàn thiện `report/team/pilot_plan.yaml` với nhóm đối chứng và luật dừng.
 - **E:** Đặc tả chỉ số, event, rủi ro kinh tế trong `report/team/chi_so.md`; tổng hợp bảy mục và đề xuất trong `report/team/ho_so_launch_v0.md`.
 
 ## 4. Kết quả
 
-Chi phí mỗi việc thành công là **4.472 đ [simulated]**, trên 978 việc thành công và tổng chi phí 4.373.585 đ. Khi cộng chi phí nhân viên cho 222 ca chuyển người, chi phí cả hệ thống khoảng **5.865 đ/yêu cầu = 0,49×** mức 12.000 đ [simulated]. Ba yếu tố nhạy nhất là số ca làm lại, tỉ lệ xem lại và lương nhân viên.
+Chi phí mỗi việc thành công là **4.472 đ [simulated]**, trên 978 việc thành công và tổng chi phí 4.373.585 đ [simulated]. Khi cộng chi phí nhân viên cho 222 yêu cầu cần làm thay, chi phí cả hệ thống khoảng **5.865 đ/yêu cầu = 0,49×** mức 12.000 đ [simulated]. Ba yếu tố nhạy nhất là số ca làm lại, tỉ lệ xem lại và lương nhân viên.
 
 Chỉ số trong đợt chạy thử gồm: chỉ số chính **82,83% (994/1.200)**, tỉ lệ bỏ qua gợi ý **27,12% (48/177)** và tỉ lệ mở lại trong 7 ngày **4,25% (51/1.200)**. Đây là số quan sát của đợt chạy thử, chưa phải bằng chứng trợ lý đã nâng chỉ số vì chưa có nhóm đối chứng.
 
@@ -32,6 +32,8 @@ Kế hoạch chọn pilot `noi_dia` + `hang_nang`, chia theo nhân viên với 2
 Khó khăn chính là chi phí mỗi việc thành công không thể tính bằng hóa đơn token chia tổng yêu cầu; phải cộng chi phí xem lại, làm lại và mọi lần chạy lỗi, rồi chia cho số việc thành công. Nhóm cũng phải phân biệt tối ưu chi phí mỗi việc thành công với chi phí cả hệ thống, vì giới hạn một lần chạy có thể rẻ theo một chỉ số nhưng đẩy thêm yêu cầu sang nhân viên. Với thiết kế pilot, 40 nhân viên không đủ mẫu cho mức chênh 5 điểm khi chia theo cụm, nên nhóm ghi rõ đánh đổi và chọn MDE 6 điểm.
 
 ## 6. Tổng hợp đóng góp
+
+- **Nguyễn Tiến Đạt (2A202603752):** Phụ trách A–B, triển khai mô hình chi phí, kiểm tra A1 và lập bảng độ nhạy. Bằng chứng ở commit `2b9ce2f` và [báo cáo cá nhân](2A202603752_NguyenTienDat.md).
 
 Chi tiết đóng góp và bằng chứng của từng thành viên nằm trong `TEAM.md` và các báo cáo cá nhân. Người phụ trách từng module phải tự kiểm tra số liệu và giải thích được cách tính trước khi nhóm chốt hồ sơ.
 

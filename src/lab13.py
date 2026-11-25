@@ -1,9 +1,11 @@
 """Lab 13 · Định giá agent và lập kế hoạch pilot (Gate 2a) — bài làm của nhóm (file nộp).
-Chạy trong thư mục src/: python3 lab13.py   (cần pandas; Nhiệm vụ D cần thêm statsmodels)
+Chạy trong thư mục src/: python3 lab13.py   (cần pandas)
 Không cần khoá API. Dữ liệu trong hai file CSV là giả lập.
 Bản gốc chưa sửa nằm ở lab13_starter.py.
 """
 import math
+from statistics import NormalDist
+
 import pandas as pd
 
 # Bảng giá GIẢ ĐỊNH của lab (không phải giá thật của nhà cung cấp nào)
@@ -87,6 +89,54 @@ def mo_hinh(runs, reqs, gia_vao=GIA_VAO, gia_ra=GIA_RA, gia_tool=GIA_TOOL, luong
         'cps': tong / so_thanh_cong if so_thanh_cong else math.inf,
         'hoa_don_moi_yc': (token + tool) / len(reqs) if len(reqs) else math.nan,
     }
+
+
+def co_mau_hai_ti_le(ti_le_goc, ti_le_muc_tieu, alpha, power):
+    """Cỡ mẫu mỗi nhóm cho kiểm định hai phía với hai nhóm bằng nhau."""
+    phan_vi = NormalDist().inv_cdf
+    z_alpha = phan_vi(1 - alpha / 2)
+    z_power = phan_vi(power)
+    ti_le_tb = (ti_le_goc + ti_le_muc_tieu) / 2
+    do_lech_chuan_gop = math.sqrt(2 * ti_le_tb * (1 - ti_le_tb))
+    do_lech_chuan_rieng = math.sqrt(
+        ti_le_goc * (1 - ti_le_goc) + ti_le_muc_tieu * (1 - ti_le_muc_tieu)
+    )
+    muc_chenh = ti_le_muc_tieu - ti_le_goc
+    return math.ceil(((z_alpha * do_lech_chuan_gop + z_power * do_lech_chuan_rieng) / muc_chenh) ** 2)
+
+
+def in_co_mau_pilot():
+    """So sánh cỡ mẫu của ba cách chia nhóm trong D1."""
+    ti_le_goc = 0.70
+    alpha = 0.05
+    power = 0.80
+    icc = 0.02
+    yeu_cau_moi_nhan_vien = 75
+    nhan_vien_moi_nhom = 20
+    depot_moi_nhom = 6
+
+    mau_5_diem = co_mau_hai_ti_le(ti_le_goc, 0.75, alpha, power)
+    he_so_thiet_ke = 1 + (yeu_cau_moi_nhan_vien - 1) * icc
+    mau_thuc_te = math.ceil(mau_5_diem * he_so_thiet_ke)
+    nhan_vien_can = math.ceil(mau_thuc_te / yeu_cau_moi_nhan_vien)
+
+    mau_6_diem = co_mau_hai_ti_le(ti_le_goc, 0.76, alpha, power)
+    # Giải c*m / (1 + (m - 1)*ICC) >= n cho m.
+    yeu_cau_can = math.ceil(mau_6_diem * (1 - icc) / (nhan_vien_moi_nhom - mau_6_diem * icc))
+    he_so_6_diem = 1 + (yeu_cau_can - 1) * icc
+    mau_hieu_dung = nhan_vien_moi_nhom * yeu_cau_can / he_so_6_diem
+
+    print('\nD1 · Cỡ mẫu pilot')
+    print(f'a) Chia theo yêu cầu, +5 điểm: {mau_5_diem:,} yêu cầu mỗi nhóm')
+    print(f'b) Chia theo nhân viên, {yeu_cau_moi_nhan_vien} yêu cầu/người: '
+          f'DE {he_so_thiet_ke:.2f} | {mau_thuc_te:,} yêu cầu thực tế mỗi nhóm | '
+          f'{nhan_vien_can} nhân viên mỗi nhóm ({2 * nhan_vien_can} người, hiện có {2 * nhan_vien_moi_nhom})')
+    print(f'c) {nhan_vien_moi_nhom} nhân viên mỗi nhóm: '
+          f'cỡ mẫu hiệu dụng < {nhan_vien_moi_nhom / icc:,.0f}, cần {mau_5_diem:,}')
+    print(f'd) {depot_moi_nhom} depot mỗi nhóm: '
+          f'cỡ mẫu hiệu dụng < {depot_moi_nhom / icc:,.0f}, cần {mau_5_diem:,}')
+    print(f'e) +6 điểm, {nhan_vien_moi_nhom} nhân viên mỗi nhóm: cần {mau_6_diem:,} yêu cầu hiệu dụng mỗi nhóm | '
+          f'ít nhất {yeu_cau_can} yêu cầu/người | DE {he_so_6_diem:.2f} | đạt {mau_hieu_dung:,.2f} hiệu dụng mỗi nhóm')
 
 
 if __name__ == '__main__':
@@ -182,6 +232,8 @@ if __name__ == '__main__':
         print(f'{phut_lam_lai:.2f} phút làm lại/ca | {cps:,.0f} đ/việc thành công | '
               f'{cps / BASELINE:.2f}× | hòa vốn ở {phut_xem_lai_hoa_von:.2f} phút xem lại/ca')
 
-    # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
-    #   from statsmodels.stats.proportion import proportion_effectsize
-    #   from statsmodels.stats.power import NormalIndPower
+    in_co_mau_pilot()
+    print('\nD3 · Tỉ lệ mở lại trong 7 ngày (dữ liệu giả lập)')
+    for ten_pham_vi, du_lieu in (('Toàn bộ', reqs), ('noi_dia + hang_nang', pham_vi)):
+        mo_lai = du_lieu['mo_lai_trong_7_ngay']
+        print(f'{ten_pham_vi}: {mo_lai.sum():,}/{len(mo_lai):,} ({mo_lai.mean():.2%})')

@@ -233,3 +233,7 @@ if __name__ == '__main__':
               f'{cps / BASELINE:.2f}× | hòa vốn ở {phut_xem_lai_hoa_von:.2f} phút xem lại/ca')
 
     in_co_mau_pilot()
+    print('\nD3 · Tỉ lệ mở lại trong 7 ngày (dữ liệu giả lập)')
+    for ten_pham_vi, du_lieu in (('Toàn bộ', reqs), ('noi_dia + hang_nang', pham_vi)):
+        mo_lai = du_lieu['mo_lai_trong_7_ngay']
+        print(f'{ten_pham_vi}: {mo_lai.sum():,}/{len(mo_lai):,} ({mo_lai.mean():.2%})')

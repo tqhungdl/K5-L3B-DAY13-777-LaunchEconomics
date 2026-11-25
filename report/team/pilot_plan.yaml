@@ -1,6 +1,5 @@
 # Lab 13 · Nhiệm vụ D · Kế hoạch pilot trợ lý hoàn phí LogiX-VN (Gate 2a)
-# Điền mọi chỗ có dấu hỏi. Khi nộp, ngoài các dòng chú thích không còn dấu hỏi nào.
-# Kiểm tra đọc được: python -c "import yaml; yaml.safe_load(open('../report/team/pilot_plan.yaml'))"
+# Kiểm tra từ src/: python -c "import yaml; yaml.safe_load(open('../report/team/pilot_plan.yaml', encoding='utf-8'))"
 #
 # D1 · Cỡ mẫu (baseline 0,70; mục tiêu +5 điểm; alpha 0,05; power 0,8; ICC 0,02)
 #   a) Chia theo yêu cầu: 1.251 yêu cầu mỗi nhóm.
@@ -15,34 +14,41 @@
 #   4. Chốt trước: chỉ số chính là tỉ lệ đóng trong 24 giờ và không mở lại trong 7 ngày; MDE 6 điểm phần trăm; chốt luật dừng và ngày quyết định 2027-01-05 trước khi bắt đầu.
 #   5. Số cụm: có đúng 20 cụm mỗi nhóm, mỗi nhân viên là 1 cụm; cần ít nhất 299 yêu cầu mỗi nhân viên để đạt cỡ mẫu cho MDE 6 điểm.
 # Đánh đổi: không đủ power để phát hiện MDE 5 điểm; chấp nhận MDE 6 điểm. Nếu tác động thật chỉ là 5 điểm, power khoảng 0,64.
-# Tỉ lệ mo_lai_trong_7_ngay hiện tại: 4,25% (51/1.200); dùng ngưỡng chênh lệch so với đối chứng >= 2 điểm kèm trần tuyệt đối 6%, không dùng ngưỡng tuyệt đối 3% vì sẽ có thể dừng ngay tuần đầu.
+# Tỉ lệ mở lại trong 7 ngày (dữ liệu giả lập): 4,25% (51/1.200) toàn mẫu và 3,97% (39/982) trong phạm vi pilot.
+# Giữ bước 50% đến khi mỗi nhân viên có ít nhất 299 yêu cầu đủ điều kiện, với đủ 7 ngày theo dõi trước khi phân tích.
 
 pilot:
-  owner: "?"                      # một người có tên vai trò, không ghi "cả đội"
-  scope: "?"                      # loại yêu cầu nào, depot nào; dựa vào kết quả A3
+  owner: "Giám đốc vận hành LogiX-VN"
+  scope: "Chỉ xử lý noi_dia và hang_nang tại các depot có cả hai nhóm; chi phí A3 lần lượt là 0,22× và 0,69× mức 12.000 đ của nhân viên (simulated). Giữ quoc_te (1,88×) và doi_tac (điều khoản riêng) ngoài pilot."
   assignment:
-    unit: "?"                     # request | staff | depot
+    unit: staff
     control_share: 0.5
     randomized: true
-  rollout: [0.10, 0.25, 0.50]     # mỗi bước một tuần
+    stratify_by: depot
+    randomization_seed: 20261125
+  rollout: [0.10, 0.25, 0.50]     # 4, 10, rồi 20 nhân viên; tối thiểu một tuần mỗi bước
   primary_metric:
     name: dong_trong_24h_khong_mo_lai_7_ngay
     baseline: 0.70
-    mde: 0.05
+    mde: 0.06
     alpha: 0.05
     power: 0.80
-    n_per_arm: "?"
-    design_effect: "?"            # 1 nếu chia theo yêu cầu
-    clusters_per_arm: "?"         # để trống nếu chia theo yêu cầu
+    n_per_arm: 859                 # cỡ mẫu hiệu dụng
+    design_effect: 6.96
+    clusters_per_arm: 20
   identifiability:
-    concurrent_control: "?"
-    spillover_risk: "?"
-    predeclared: "?"
+    concurrent_control: "Nhóm đối chứng dùng quy trình hiện tại cùng thời gian và tại cùng depot. Phân tích chỉ số chính ở bước 50%."
+    spillover_risk: "Phân quyền theo staff_id, giữ gợi ý trong nhóm can thiệp và ghi log lượt mở trợ lý để kiểm tra việc dùng chéo."
+    predeclared: "Chốt chỉ số chính, MDE 6 điểm phần trăm, luật dừng và ngày quyết định trước khi bắt đầu. Nếu đến ngày quyết định chưa đủ mẫu hoặc chưa đủ 7 ngày theo dõi, hoãn kết luận về hiệu quả."
   stop_rules:
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
-    - "NẾU ? TRONG ? THÌ ? KHÔNG THÌ ?"
-  interim_looks: "chỉ kiểm tra chỉ số an toàn"
-  rollback: "?"                   # ai bấm, mất bao lâu, khách được phục vụ bằng gì
-  decision_date: "?"
-  simulated_inputs: ["?"]         # liệt kê mọi con số giả lập đã dùng
+    - "NẾU tỉ lệ mở lại trong 7 ngày vượt đối chứng ít nhất 2 điểm phần trăm hoặc vượt 6%, hoặc có ít nhất 1 ca hoàn trùng TRONG kỳ rà soát an toàn hằng ngày THÌ Giám đốc vận hành tắt trợ lý trong 30 phút và điều tra KHÔNG THÌ tiếp tục theo dõi ở bước hiện tại đến kỳ duyệt rollout."
+    - "NẾU chi phí mỗi việc thành công vượt 8.000 đ TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí thu hẹp về noi_dia và giới hạn tối đa 2 lần chạy KHÔNG THÌ giữ phạm vi hiện tại đến kỳ duyệt rollout."
+    - "NẾU tỉ lệ bỏ qua gợi ý vượt 40% TRONG 1 tuần THÌ Trưởng nhóm CSKH giữ nguyên bước rollout và phỏng vấn 5 nhân viên trong 3 ngày KHÔNG THÌ giữ lịch duyệt rollout."
+  interim_looks: "Kiểm tra an toàn hằng ngày và tổng hợp chi phí, mức sử dụng theo tuần. Chỉ phân tích chỉ số chính khi đủ mẫu ở bước 50% và các yêu cầu đã có đủ 7 ngày theo dõi."
+  rollback: "Giám đốc vận hành tắt trợ lý trong 30 phút; nhân viên tiếp tục xử lý yêu cầu theo quy trình hiện tại."
+  decision_date: "2027-01-05"
+  simulated_inputs:
+    - "A3 (simulated): noi_dia 0,22×, hang_nang 0,69×, quoc_te 1,88× so với 12.000 đ/yêu cầu."
+    - "Dữ liệu giả lập: mở lại 4,25% (51/1.200) toàn mẫu và 3,97% (39/982) trong phạm vi."
+    - "Giả định thiết kế: baseline 0,70; MDE 0,06; alpha 0,05; power 0,80; ICC 0,02; 20 cụm mỗi nhóm; DE 6,96; 299 yêu cầu mỗi cụm; cần 859 yêu cầu hiệu dụng mỗi nhóm."
+    - "Ngưỡng vận hành đặt trước: chênh mở lại 2 điểm phần trăm hoặc trần 6%; 1 ca hoàn trùng; 8.000 đ mỗi việc thành công; bỏ qua gợi ý trên 40%."

@@ -10,12 +10,12 @@ Người gắn nhãn 1: Trần Quang Hưng · Người gắn nhãn 2: Lê Quốc
 | --: | --- | --- | --- | --- |
 | 1 | Do người dùng | Do người dùng | Có | Do người dùng |
 | 2 | Hệ thống | Hệ thống | Có | Hệ thống |
-| 3 | Do người dùng | Ngữ cảnh | Không | Ngữ cảnh |
+| 3 | Ngữ cảnh | Ngữ cảnh | Có | Ngữ cảnh |
 | 4 | Giới hạn hệ thống | Giới hạn hệ thống | Có | Giới hạn hệ thống |
-| 5 | Hệ thống | Ngầm | Không | Ngầm |
+| 5 | Ngầm | Ngầm | Có | Ngầm |
 | 6 | Do người dùng | Do người dùng | Có | Do người dùng |
 | 7 | Hệ thống | Hệ thống | Có | Hệ thống |
-| 8 | Ngầm | Hệ thống | Không | Hệ thống |
+| 8 | Hệ thống | Hệ thống | Có | Hệ thống |
 | 9 | Hệ thống | Do người dùng | Không | Do người dùng |
 | 10 | Giới hạn hệ thống | Ngữ cảnh | Không | Ngữ cảnh |
 | 11 | Giới hạn hệ thống | Giới hạn hệ thống | Có | Giới hạn hệ thống |
@@ -29,7 +29,7 @@ Người gắn nhãn 1: Trần Quang Hưng · Người gắn nhãn 2: Lê Quốc
 | 19 | Giới hạn hệ thống | Giới hạn hệ thống | Có | Giới hạn hệ thống |
 | 20 | Hệ thống | Hệ thống | Có | Hệ thống |
 
-**Tỉ lệ đồng thuận ban đầu:** 13 / 20 = **65%**
+**Tỉ lệ đồng thuận ban đầu:** 16 / 20 = **80%**, đạt ngưỡng của lab. Bốn ca khác nhãn là 9, 10, 17 và 18.
 
 ## Định nghĩa đã rà soát
 
@@ -43,9 +43,6 @@ Người gắn nhãn 1: Trần Quang Hưng · Người gắn nhãn 2: Lê Quốc
 
 ## Quy tắc phân biệt cho các ca không trùng
 
-- **Ca 3 — Ngữ cảnh.** Hoàn về ví đúng thiết kế, nhưng khách kỳ vọng nhận tiền qua tài khoản ngân hàng.
-- **Ca 5 — Ngầm.** Chỉ kiểm tra mẫu cuối tuần mới phát hiện 14 đơn được hoàn thừa vì tính theo giá trước giảm.
-- **Ca 8 — Hệ thống.** Trích dẫn điều khoản không tồn tại xuất hiện ngay trong câu trả lời, dù số tiền hoàn đúng.
 - **Ca 9 — Do người dùng.** Đầu vào sai vì khách nhập mã đơn của sàn vào ô mã vận đơn.
 - **Ca 10 — Ngữ cảnh.** Trợ lý áp dụng đúng điều khoản bất khả kháng, nhưng cam kết giao trong 24 giờ trên ứng dụng tạo kỳ vọng khách sẽ được hoàn phí.
 - **Ca 17 — Ngầm.** Trợ lý dùng bảng giá cũ cho 212 đơn trong 9 ngày và sai lệch không dẫn đến lượt mở lại nào.
